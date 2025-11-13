@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: automait-app
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        value: supersecretkey  # Replace with a real one later!
