@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hirer Dashboard | AutomAIT</title>
+</head>
+<body>
+  <h1>Welcome, Hirer</h1>
+
+  <a href="{{ url_for('talent_request') }}">
+    <button>Create New Talent Request</button>
+  </a>
+
+  <h2>Your Active Talent Requests</h2>
+
+  {% if talent_requests %}
+    <ul>
+      {% for req in talent_requests %}
+        <li>
+          <strong>{{ req.role_title }}</strong><br>
+          Skills: {{ req.skills }}<br>
+          Location: {{ req.location }}<br>
+          Salary: {{ req.salary_range }}<br>
+          Openings: {{ req.num_openings }}<br>
+          Notes: {{ req.notes or '—' }}
+        </li>
+        <hr>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No requests submitted yet.</p>
+  {% endif %}
+
+  <br>
+  <a href="{{ url_for('logout') }}">Log out</a>
+</body>
+</html>
