@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Submissions | AutomAIT</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body {
+      background-color: #0f172a;
+      font-family: 'Inter', sans-serif;
+      color: #e2e8f0;
+    }
+    .submission-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 40px auto;
+      justify-content: center;
+    }
+    .candidate-card {
+      background: rgba(30, 41, 59, 0.8);
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      backdrop-filter: blur(6px);
+    }
+    .candidate-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+    }
+    .status-chip {
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .submitted { background-color: #10b981; color: white; }
+    .pending { background-color: #facc15; color: #111827; }
+    .candidate-header { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
+    .candidate-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+    .field { margin-bottom: 6px; }
+    .label { font-weight: 600; color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center; margin-top: 30px;">My Candidate Submissions</h1>
+
+  {% if submissions %}
+    <div class="submission-container">
+      {% for sub in submissions %}
+        {% for c in sub.candidates %}
+        <div class="candidate-card">
+          <div class="candidate-avatar">
+            {{ c.first_name[0] }}{{ c.last_name[0] }}
+          </div>
+          <div class="candidate-header">{{ c.prefix }} {{ c.first_name }} {{ c.last_name }}</div>
+          <div class="field"><span class="label">Submitted at:</span> {{ sub.submitted_at }}</div>
+          <div class="field"><span class="label">Role:</span> {{ talent_requests[sub.request_id].role_title }}</div>
+          <div class="field"><span class="label">Location:</span> {{ c.location }}</div>
+          <div class="field"><span class="label">Salary Expectations:</span> {{ c.salary }}</div>
+          <div class="field"><span class="label">Work Rights:</span> {{ c.work_rights }}</div>
+          <div class="field"><span class="label">Willing to Relocate:</span> {{ c.relocate }}</div>
+          <div class="field"><span class="label">Rights to Represent:</span> ✅</div>
+          <div class="status-chip submitted">✔ Submitted</div>
+        </div>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p style="text-align:center; margin-top: 40px;">You haven’t submitted any candidates yet.</p>
+  {% endif %}
+
+  <br>
+  <div style="text-align:center; margin-bottom: 40px;">
+    <a href="{{ url_for('dashboard_recruiter') }}">← Back to Dashboard</a>
+  </div>
+</body>
+</html>

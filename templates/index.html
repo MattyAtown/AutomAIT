@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Welcome to AutomAIT</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="hero-container">
+    <div class="hero-glow">
+      <h1 class="hero-title">Cut Your Costs.<br>Save Your Time.<br><span class="highlight">AutomAIT</span> Your Recruitment.</h1>
+      <p class="hero-subtitle">
+        No more middlemen. No more games.  
+        One platform. Fair. Fast. Controlled by **you**.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="{{ url_for('login_hirer') }}">
+          <button class="primary">🚀 I'm Hiring</button>
+        </a>
+        <a href="{{ url_for('login_recruiter') }}">
+          <button class="secondary">🎯 I'm a Recruiter</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

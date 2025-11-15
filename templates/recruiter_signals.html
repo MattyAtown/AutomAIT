@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Live Talent Signals | AutomAIT</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<h1>📱 Live Talent Requests</h1>
+
+
+{% if talent_requests %}
+<ul>
+{% for req in talent_requests %}
+<li>
+<p><strong>Role:</strong> {{ req.role_title }}</p>
+<p><strong>Skills:</strong> {{ req.skills }}</p>
+<p><strong>Location:</strong> {{ req.location }}</p>
+<p><strong>Salary Range:</strong> {{ req.salary_range }}</p>
+<p><strong>Openings:</strong> {{ req.num_openings }}</p>
+<p><strong>Notes:</strong> {{ req.notes or '—' }}</p>
+
+
+<form action="{{ url_for('submit_candidate', request_id=loop.index0) }}" method="get">
+<button type="submit">Submit Candidate</button>
+</form>
+</li>
+<hr>
+{% endfor %}
+</ul>
+{% else %}
+<p>No live requests at the moment. Check back soon.</p>
+{% endif %}
+
+
+<br>
+<a href="{{ url_for('dashboard_recruiter') }}">← Back to Dashboard</a>
+</body>
+</html>

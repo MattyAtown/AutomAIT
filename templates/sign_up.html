@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hirer Sign-Up | AutomAIT</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+.container { max-width: 500px; margin: 60px auto; padding: 30px; background-color: #111827; border-radius: 8px; color: #fff; }
+input[type="text"], input[type="email"] { width: 100%; padding: 10px; margin-top: 10px; background-color: #1f2937; border: 1px solid #374151; color: white; }
+button { padding: 10px 20px; background-color: #00BFFF; border: none; color: white; margin-top: 20px; cursor: pointer; }
+.success-popup { display: none; background-color: #10B981; color: #fff; padding: 20px; margin-top: 30px; border-radius: 8px; text-align: center; }
+</style>
+<script>
+function showPopup() {
+document.getElementById('successPopup').style.display = 'block';
+}
+</script>
+</head>
+<body>
+<div class="container">
+<h1>Create Your Hirer Account</h1>
+<form onsubmit="showPopup(); return false;">
+<label>Company Name:</label>
+<input type="text" name="company_name" required>
+
+
+<label>Your Name:</label>
+<input type="text" name="full_name" required>
+
+
+<label>Email Address:</label>
+<input type="email" name="email" required>
+
+
+<label>Phone Number:</label>
+<input type="text" name="phone" required>
+
+
+<label>Company Website:</label>
+<input type="text" name="website">
+
+
+<label>Location:</label>
+<input type="text" name="location">
+
+
+<label>Industry:</label>
+<input type="text" name="industry">
+
+
+<button type="submit">Sign Up</button>
+</form>
+
+
+<div id="successPopup" class="success-popup">
+<h2>🎉 Congratulations!</h2>
+<p>Welcome to the future of Recruitment.<br>We are proud to have you on board.</p>
+<p>Please continue to your dashboard or return to the previous page.</p>
+<p><strong>📧 Check your email</strong> (including junk/spam) for details on how it works and pricing plans.</p>
+<br>
+<a href="{{ url_for('dashboard_hirer') }}"><button>Go to Dashboard</button></a>
+<a href="{{ url_for('home') }}"><button>Back to Home</button></a>
+</div>
+</div>
+</body>
+</html>

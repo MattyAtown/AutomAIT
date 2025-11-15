@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Client Hiring Dashboard | AutomAIT</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome, Hirer 👤</h1>
+
+    <div class="button-bar">
+      <a href="{{ url_for('talent_request') }}">
+        <button class="primary">+ Create New Talent Request</button>
+      </a>
+      <a href="{{ url_for('logout') }}">
+        <button class="secondary">Log Out</button>
+      </a>
+    </div>
+
+    <h2>📡 Your Active Talent Requests</h2>
+
+    {% if talent_requests %}
+      <div class="card-grid">
+        {% for req in talent_requests %}
+          <div class="card">
+            <h3>{{ req.role_title }}</h3>
+            <p><strong>Skills:</strong> {{ req.skills }}</p>
+            <p><strong>Location:</strong> {{ req.location }}</p>
+            <p><strong>Salary:</strong> {{ req.salary_range }}</p>
+            <p><strong>Openings:</strong> {{ req.num_openings }}</p>
+            <p><strong>Notes:</strong> {{ req.notes or '—' }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="empty-state">🚫 No requests submitted yet.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Recruiter Sign Up | AutomAIT</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+.container { max-width: 600px; margin: 50px auto; padding: 30px; background-color: #111827; border-radius: 8px; color: #fff; }
+input, select { width: 100%; padding: 10px; margin: 10px 0; background-color: #1f2937; border: 1px solid #374151; color: white; }
+button { background-color: #3B82F6; padding: 10px 20px; color: white; border: none; cursor: pointer; }
+.popup {
+display: none;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: #111827;
+color: white;
+padding: 30px;
+border-radius: 8px;
+box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+text-align: center;
+z-index: 1000;
+}
+.popup button {
+margin-top: 20px;
+background-color: #10B981;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Recruiter Sign Up</h1>
+<p>Join AutomAIT and bring your talent to the front line of ethical, efficient recruitment.</p>
+
+
+<form method="POST" onsubmit="showPopup(event)">
+<label>Full Name:</label>
+<input type="text" name="full_name" required>
+
+
+<label>Email:</label>
+<input type="email" name="email" required>
+
+
+<label>Phone Number:</label>
+<input type="text" name="phone">
+
+
+<label>Agency Name:</label>
+<input type="text" name="agency">
+
+
+<label>Recruiter License / Ref (if applicable):</label>
+<input type="text" name="license">
+
+
+<button type="submit">Sign Up</button>
+</form>
+</div>
+
+
+<div id="successPopup" class="popup">
+<h2>🎉 Congratulations!</h2>
+<p>Welcome to the future of Recruitment.<br>We are proud to have you on board.</p>
+<p>Please continue to your dashboard for your personal user account, or click back to return to the previous page.</p>
+<p>Instructions will also follow via email — check your inbox, junk, or spam for how it works and pricing plans.</p>
+<button onclick="window.location.href='{{ url_for('dashboard_recruiter') }}'">Go to Dashboard</button>
+</div>
+
+
+<script>
+function showPopup(event) {
+event.preventDefault();
+document.getElementById("successPopup").style.display = "block";
+}
+</script>
+</body>
+</html>

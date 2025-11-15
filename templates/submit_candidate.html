@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submit Candidate | AutomAIT</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script>
+    function showCandidateForms() {
+      const count = document.getElementById("candidate_count").value;
+      for (let i = 1; i <= 5; i++) {
+        const section = document.getElementById(`candidate${i}`);
+        section.style.display = i <= count ? 'block' : 'none';
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>👤 Submit Candidates for {{ request_data.role_title }}</h1>
+
+  <form method="POST">
+    <label for="candidate_count"><strong>How many candidates?</strong></label>
+    <select name="candidate_count" id="candidate_count" onchange="showCandidateForms()" required>
+      <option value="">Select...</option>
+      {% for i in range(1, 6) %}
+      <option value="{{ i }}">{{ i }}</option>
+      {% endfor %}
+    </select>
+
+    {% for i in range(1, 6) %}
+    <div id="candidate{{ i }}" style="display:none; border: 1px solid #444; padding: 15px; margin-top: 20px;">
+      <h3>Candidate {{ i }}</h3>
+
+      <label>Prefix:</label>
+      <input type="text" name="prefix{{ i }}">
+
+      <label>First Name:</label>
+      <input type="text" name="first_name{{ i }}">
+
+      <label>Last Name:</label>
+      <input type="text" name="last_name{{ i }}">
+
+      <label>Email:</label>
+      <input type="email" name="email{{ i }}">
+
+      <label>Gender:</label>
+      <select name="gender{{ i }}">
+        <option value="">—</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+        <option value="Prefer not to say">Prefer not to say</option>
+      </select>
+
+      <label>Location (Postcode or City):</label>
+      <input type="text" name="location{{ i }}">
+
+      <label>Salary or Rate Expectations:</label>
+      <input type="text" name="salary{{ i }}">
+
+      <label>Work Rights / Visa Type:</label>
+      <input type="text" name="work_rights{{ i }}">
+
+      <label>Willing to Relocate?</label>
+      <select name="relocate{{ i }}">
+        <option value="">—</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label>✅ Right to Represent:</label>
+      <input type="checkbox" name="rtr{{ i }}">
+    </div>
+    {% endfor %}
+
+    <br><br>
+    <button type="submit">📨 Submit Candidates</button>
+  </form>
+
+  <br>
+  <a href="{{ url_for('recruiter_signals') }}">← Back to Signals</a>
+</body>
+</html>

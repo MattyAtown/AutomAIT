@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Recruiter Dashboard | AutomAIT</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome, Recruiter 🤖</h1>
+
+    <div class="button-bar">
+  <a href="{{ url_for('recruiter_signals') }}">
+    <button class="primary">📡 View Live Talent Signals</button>
+  </a>
+
+  <a href="{{ url_for('recruiter_submissions') }}">
+    <button class="primary">📄 My Submissions</button>
+  </a>
+
+  <a href="{{ url_for('logout') }}">
+    <button class="secondary">Log Out</button>
+  </a>
+</div>
+
+
+    <h2>💼 What You Can Do</h2>
+    <ul>
+      <li>Track & respond to live hiring needs</li>
+      <li>Submit up to <strong>3 RTR-cleared candidates</strong> per role</li>
+      <li>Get feedback and track your submissions</li>
+    </ul>
+
+    <p class="note">🔐 You only see signals based on your interest tags.</p>
+  </div>
+</body>
+</html>

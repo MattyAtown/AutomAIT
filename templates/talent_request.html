@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Create Talent Request | AutomAIT</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Create Talent Request</h1>
+
+    <form method="POST" class="request-form">
+      <label>Role Title:</label>
+      <input type="text" name="role_title" required>
+
+      <label>Required Skills:</label>
+      <input type="text" name="skills" placeholder="e.g. Python, AWS, Docker" required>
+
+      <label>Location:</label>
+      <input type="text" name="location" placeholder="e.g. Remote, London" required>
+
+      <label>Salary Range:</label>
+      <input type="text" name="salary_range" placeholder="e.g. £60-80k" required>
+
+      <label>Number of Openings:</label>
+      <input type="number" name="num_openings" min="1" required>
+
+      <label>Notes:</label>
+      <textarea name="notes" placeholder="Optional details or project context"></textarea>
+
+      <button class="primary" type="submit">🚀 Submit Request</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('dashboard_hirer') }}">← Back to Dashboard</a>
+  </div>
+</body>
+</html>

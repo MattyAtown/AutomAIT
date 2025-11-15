@@ -1,0 +1,43 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Hirer Login | AutomAIT</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    .container { max-width: 500px; margin: 60px auto; padding: 30px; background-color: #111827; border-radius: 8px; color: #fff; }
+    .button-group { display: flex; justify-content: space-between; margin-top: 20px; }
+    input[type="text"], input[type="password"] {
+      width: 100%; padding: 10px; margin-top: 10px; background-color: #1f2937; border: 1px solid #374151; color: white;
+    }
+    button { padding: 10px 20px; border: none; cursor: pointer; }
+    .login-btn { background-color: #00BFFF; color: white; }
+    .signup-btn { background-color: #10B981; color: white; }
+    h2 { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to AutomAIT for Employers</h1>
+    <p>Where modern hiring meets transparency, fairness, and control.  
+    Submit your talent needs, receive verified candidates from trusted recruiters,  
+    and remove the noise of cold calls and inflated fees.  
+    <strong>This is ethical hiring powered by automation.</strong></p>
+
+    <form method="POST">
+      <h2>Log In</h2>
+      <label>Username:</label>
+      <input type="text" name="username" required>
+      
+      <label>Password:</label>
+      <input type="password" name="password" required>
+
+      <div class="button-group">
+        <button type="submit" class="login-btn">Log In</button>
+        <a href="{{ url_for('sign_up') }}">
+          <button type="button" class="signup-btn">Sign Up</button>
+        </a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
